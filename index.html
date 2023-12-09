@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mutualfund Calculator </title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table,
+        th,
+        tr {
+            background-color: #EEE;
+            border: 1px solid rgb(10, 10, 10);
+        }
+
+        td {
+            align-items: center;
+            border: 1px solid #EEE;
+            padding: 6px 10px;
+        }
+
+        label {
+            background-color: #EEE;
+        }
+
+        .ro {
+            border: 0px solid #EEE;
+            background-color: #EEE;
+        }
+
+        .red {
+            color: #AA0000;
+        }
+
+        .green {
+            color: #00AA00;
+        }
+
+        input[type=text],
+        input[type=number] {
+            align-items: center;
+
+            border: 0px solid #EEE;
+        }
+
+        
+        input[type=number],input[type=text]{
+            /*width: 100%;
+            padding: 4px 4px;
+            margin: 4px 0;*/
+            display: inline-block;
+            border-radius: 1px ;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: bold;
+            
+        }
+
+        input[type=button],
+        input[type=submit],
+        input[type=reset] {
+            background-color: #044caa;
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            text-decoration: none;
+            margin: 4px 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>MutualFund Calculator</h2>
+    <table id="printableArea">
+        <form id="budgetForm">
+            <tr>
+                <td>Fund Name:</td>
+                <td><input style="width: 250px;" type="text" id="fundname" name="fundname" ><br></td>
+                <td>FundSize:</td>
+                <td>Rs.<input style="width: 250px;" type="number" id="fundsize" name="fundsize" onchange="calculate()"><br></td>
+            </tr>
+
+            <tr>
+                <td>NAV:</td>
+                <td>Rs.<input class="green" type="number" id="nav" name="nav" onchange="calculate()"><br></td>
+
+                <td>Units:</td>
+                <td><input class="green" type="number" id="fundunit" name="fundsize" onchange="calculate()"><br></td>
+            </tr>
+
+            <tr>
+                <td colspan="1"><b>Investment Value</b></td>
+                <td>Rs.<input class="green" type="number" id="investmentValue" name="exitval" onchange="calculateUnit()"></td>
+                <td>Stamp Duty(0.005%)</td>
+                <td>Rs.<input class="ro red"  type="number" id="stampduty" name="stampduty"  readonly></td>
+            </tr>
+
+            <tr>
+                <td>STCG Tax</td>
+                <td>Rs.<input class="ro red" type="number" id="STCG" readonly></td>
+                <td>LTCG Tax</td>
+                <td>Rs.<input class="ro red" style="width: 250px;" type="number" id="LTCG" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="salary">ExpenseRatio:</td>
+                <td>%&nbsp;<input style="width: 250px;" type="number" id="expratio" name="expratio" onchange="calculateExpanse()"><br></td>
+                <td>Expense Per Anum:</td>
+                <td>Rs.<input class="ro red" type="number" id="expval" name="expval" readonly></td>
+            </tr>
+            <tr>
+                <td><label for="salary">ExitLoad:</td>
+                <td>%&nbsp;<input style="width: 250px;" type="number" id="exitload" name="exitload" onchange="calculateExit()"><br></td>                 
+                <td>Exit Load Value:</td>
+                <td>Rs.<input class="ro red"type="number" id="exitval" name="exitval" readonly></td>
+            </tr>
+
+            <!--
+            <tr>
+                <td colspan="4">
+                    <hr />
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><b><u>[Calculate Investment]</u></b></td>
+                <td colspan="2"><b><u>[Calculator Redemption]</u></b></td>
+            </tr>
+            <tr>
+                <td colspan="1">[ Invest ]</td>
+                <td colspan="1">Rs.<input style="width: 250px;" type="number" id="buy" name="buy"
+                        onchange="calculate()"></td>
+                <td colspan="1">[ Redeem ]</td>
+                <td colspan="1" align="center"><input style="width: 250px;" type="number" id="sell" name="sell"
+                        onchange="calculate()"></td>
+            </tr>
+
+            <tr>
+                <td colspan="1">[ Nav Price ]</td>
+                <td colspan="1">Rs.<input style="width: 250px;" type="number" id="inavprice" name="inavprice"
+                        onchange="calculate()"></td>
+                
+                <td colspan="1">[ Nav Price ]</td>
+                <td colspan="1">Rs.<input style="width: 250px;" type="number" id="rnavprice" name="rnavprice"
+                        onchange="calculate()"></td>
+            </tr>
+
+            <tr>
+                <td>Units Accumulated:</td>
+                <td><input style="width: 250px;" type="number" id="units" name="units" onchange="calculate()" readonly>
+                </td>
+                <td>Redeem Amount:</td>
+                <td>Rs.<input style="width: 250px;" type="number" id="redeem" name="redeem" onchange="calculate()"
+                        readonly></td>
+            </tr>
+
+            <tr>
+                <td colspan="4" class="ro" style="color: #AAA;">nToolz.github.io</td>              
+            </tr>
+
+        -->
+    </table>
+
+    <table id="grid">
+        <tr><div id="needsFields"></div></tr>
+    </table>
+    </form>
+
+    <script>
+
+        function getInvestment()
+        {
+            // Calculate the value of the investment
+            var nav = get("#nav");
+            var fundunit = get("#fundunit");
+            var investmentValue = parseFloat((fundunit * nav).toFixed(4));
+            return investmentValue;
+        }
+
+        function calculateExpanse()
+        {
+             // Calculate the expenses
+             var expratio = get("#expratio");
+            var expenseValue = getInvestment() * (expratio / 100);
+            expenseValue = parseFloat(expenseValue.toFixed(4));
+            set("#expval",expenseValue);
+        }
+
+        function calculateExit()
+        {
+             // Calculate the exit load        
+             var exitLoad = get("#exitload");
+            var exitLoadValue = getInvestment() * (exitLoad / 100); 
+            exitLoadValue = parseFloat(exitLoadValue.toFixed(4));
+            set("#exitval",exitLoadValue);
+        }
+
+        function calculateInv()
+        {
+            //Calculate Investment
+            var buy = get("#buy");
+            var inavprice = get("#inavprice");
+            var unitsbuy = buy / nav;
+            set("#fundunit", unitsbuy);
+        }
+
+        function calculateRedeem()
+        {
+            //Caculate Redeem
+            var sell = get("#sell");
+            var amount = sell * nav;
+            set("#redeem", amount)
+        }
+
+        function calculateUnit()
+        {
+            var nav = get("#nav");
+            var investmentValue = get("#investmentValue");
+
+            var fundunit = investmentValue/nav;
+            set("#fundunit",fundunit);
+
+            calculate();
+        }
+
+        function calculate() {
+            var fundsize = get('#fundsize');
+
+            set("#investmentValue",getInvestment())
+
+            //Stamp Duty
+            var stampDuty = parseFloat((getInvestment() * 0.005).toFixed(4));
+            set("#stampduty",stampDuty);
+
+            //STCG
+            var stcg = getInvestment() * 0.15;
+            set("#STCG",stcg);
+
+            //LTCG
+            var ltcg = getInvestment() * 0.10;
+            set("#LTCG",ltcg);
+
+
+            calculateExit();
+            calculateExpanse();
+
+        }
+
+        function get(f) {
+            return document.querySelector(f).value;
+        }
+
+        function set(f, v) {
+            document.querySelector(f).value = parseFloat(v.toFixed(2));
+            /*
+            if (v < 0)
+                document.querySelector(f).className = "ro red";
+
+            if (v > 0)
+                document.querySelector(f).className = "ro green";
+                */
+        }
+
+        function printDiv(divName) {
+            var printContents = document.querySelector(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+</body>
+
+</html>
