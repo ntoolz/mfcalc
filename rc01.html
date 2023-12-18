@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        input[type=text],
+        input[type=number],
+        select {
+            /*width: 50%;*/
+            padding: 12px 20px;
+            margin: 10px 0;
+            /*display: block;*/
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 20px;
+            width: 70%;
+            height: 60px;
+        }
+
+        label {
+            padding: 12px 20px;
+            justify-content: center;
+            min-width: 30%;
+
+        }
+
+        input[type=button] {
+            width: 100%;
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=button]:hover {
+            background-color: #FFa049;
+        }
+
+        div.container {
+            border-radius: 5px;
+            background-color: #FFF;
+            padding: 0px;
+            max-width: 800px;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        div.field {
+            display: flex;
+            flex-direction: grid;
+            align-items: center;
+            justify-content: center;
+        }
+
+        legend {
+            color: #AAA;
+            padding: 4px 40px;
+            border: 1px solid #fff;
+            background: #FFF;
+        }
+
+        fieldset {
+            border-color: #EEE;
+            border-style: solid;
+            margin: 10px;
+
+        }
+
+        @media screen and (max-width: 600px) {
+  fieldset, body,input,label {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+ 
+            <center>
+                <legend style="color:#000;" class="title">Mutual Fund Calculator</legend>
+            </center>
+
+
+            <fieldset style="background:#EEF; border-color: #DDF;">
+                <legend style="background:#DDF;color:#000; border: 1px solid #DDF;">Fund Info</legend>
+                <div class="field">
+                    <label>NAV (Rs.)</label>
+                    <input type="number" id="nav" placeholder="net assert value">
+                </div>
+
+                <div class="field">
+                    <label>Units</label>
+                    <input type="number" id="units" placeholder="Your last name..">
+                </div>
+
+                <div class="field">
+                    <label for="lname">Expense Ratio (%)</label>
+                    <input type="number" id="expRatioPc" name="lastname" placeholder="% of expense ratio">
+                </div>
+
+                <div class="field">
+                    <label for="lname">Exit Load (%)</label>
+                    <input type="number" id="exitLoadPc" name="lastname" placeholder="% exit load">
+                </div>
+
+            </fieldset>
+
+
+            <div class="field">
+
+                <!--<input type="button" value="Calculate" >-->
+
+            </div>
+
+            <fieldset style="background:#FEB;border-color: #FDA;">
+                <legend style="background:#FDA;color:#000;border: 1px solid #FDA;">Investment</legend>
+                <div class="field">
+                    <label>Total Investment (Rs)</label>
+                    <input type="number" id="investment" placeholder="investment vlaue">
+                </div>
+                <div class="field">
+                    <label>Expected Return (%)</label>
+                    <input type="number" id="expReturn" placeholder="% of expected return">
+                </div>
+                <div class="field">
+                    <label>Expected Return (Rs.)</label>
+                    <input type="number" id="expReturnValue" placeholder="value of expected return ">
+                </div>
+            </fieldset>
+
+            <hr />
+
+            <fieldset style="background:#FEE;">
+                <legend style="background:#FDD;color:#000">Expenses:</legend>
+                <div class="field">
+                    <label for="lname">Stamp Duty(0.005%) (Rs.)</label>
+                    <input type="number" id="stampduty" style="border:0px;" placeholder="0.005% of investment" readonly>
+                </div>
+
+
+
+
+                <div class="field">
+                    <label for="lname">Expense Ratio Value (Rs.)</label>
+                    <input type="number" id="expRatioVal" style="border:0px;" placeholder="expense ratio value"
+                        readonly>
+                </div>
+
+                <div class="field">
+                    <label for="lname">Exit Load (Rs.)</label>
+                    <input type="number" id="exitLoadVal" style="border:0px;" placeholder="exit load value" readonly>
+                </div>
+
+                <div class="field">
+                    <label for="lname">LTCG Tax(Rs.)</label>
+                    <input type="number" id="ltcgTax" style="border:0px;" placeholder="expense ratio value" readonly>
+                </div>
+
+                <div class="field">
+                    <label for="lname">STCG Tax(Rs.)</label>
+                    <input type="number" id="stcgTax" style="border:0px;" placeholder="expense ratio value" readonly>
+                </div>
+
+            </fieldset>
+
+            <fieldset style="background:#EFE;">
+                <legend style="background:#DFD;color:#000">Profit</legend>
+                <div class="field">
+                    <label for="lname">Average NAV</label>
+                    <input type="number" id="lname" name="lastname" placeholder="investment vlaue">
+                </div>
+                <div class="field">
+                    <label for="lname">Total Return (Rs.)</label>
+                    <input type="number" id="lname" name="lastname" placeholder="Your last name..">
+                </div>
+                <div class="field">
+                    <label for="lname">Total Return (%)</label>
+                    <input type="number" id="lname" name="lastname" placeholder="Your last name..">
+                </div>
+            </fieldset>
+
+    </div>
+
+</body>
+
+</html>
