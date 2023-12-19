@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>mf cal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: auto;
+            max-width: 800px;
+            font-family: Arial;
+            font-size: 18px;
+        }
+
+        input[type=number],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-size: 18px;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: 0px solid #FFF;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .ro {
+            border: 0px solid #EEE;
+            background-color: #EEE;;
+        }
+        .red {
+            color: #AA0000;
+            background-color: #ffeded;
+        }
+
+        .green {
+            color: #00AA00;
+            background-color: #edffed;;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 800px) {
+
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2><center>Mutual Fund Calculator</center> </h2>
+    <div class="container">
+        <form action="/action_page.php">
+            
+            <div class="row">
+                <div class="col-25">
+                    <label>NAV [Rs]:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="nav" placeholder="net assert value in Rs" onchange="calculate()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Number Of Units:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="fundunit" placeholder="number of units" onchange="calculate()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Total Investment:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="investmentValue" placeholder="total money invested..."
+                        onchange="calculateUnit()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Expense Ratio:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="expratio" placeholder="expense ratio %.." onchange="calculateExpanse()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Exit Load:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="exitload" placeholder="exitload %.." onchange="calculateExit()">
+                </div>
+            </div>
+
+        <fieldset style="margin: 10px;background:#ffeded; border-color: #ff8181;">
+            <legend style="background:#ff8181;">Expenses</legend>
+            <div class="row">
+                <div class="col-25">
+                    <label>Stamp Duty(0.005%):</label>
+                </div>
+                <div class="col-75">
+                    <input class="ro red" type="number" id="stampduty" placeholder="stamp duty carhages" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Expense Value:</label>
+                </div>
+                <div class="col-75">
+                    <input class="ro red" type="number" id="expval" placeholder="expense per value per anum" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Exit Load Value:</label>
+                </div>
+                <div class="col-75">
+                    <input class="ro red" type="number" id="exitval" placeholder="Exit load value" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>STCG Tax:</label>
+                </div>
+                <div class="col-75">
+                    <input class="ro red" type="number" id="STCG" placeholder="short term capital gain tax" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>LTCG Tax:</label>
+                </div>
+                <div class="col-75">
+                    <input class="ro red" type="number" id="LTCG" placeholder="long term capital gain tax" readonly>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset style="margin: 10px;background:#edffed; border-color: #81ff81;">
+            <legend style="background:#81ff81;">Profit</legend>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Average NAV [Rs]:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" id="avgNav" placeholder="average net assert value in Rs" onchange="calculateProfit()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Total Profit[Rs]:</label>
+                </div>
+                <div class="col-75">
+                    <input  class="ro green" type="number" id="totReturn" placeholder="average net assert value in Rs" onchange="calculateProfit()" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label>Total Profit  [%]:</label>
+                </div>
+                <div class="col-75">
+                    <input  class="ro green" type="number" id="totReturnPc" placeholder="average net assert value in Rs" onchange="calculateProfit()" readonly>
+                </div>
+            </div>
+
+
+        </fieldset>    
+
+            
+        </form>
+    </div>
+
+    <script>
+
+        function getInvestment() {
+            // Calculate the value of the investment
+            var nav = get("#nav");
+            var fundunit = get("#fundunit");
+            var investmentValue = parseFloat((fundunit * nav).toFixed(4));
+            return investmentValue;
+        }
+
+        function calculateProfit()
+        {
+            //var nav = get("#nav");
+            var fundunit = get("#fundunit");
+            var avgnav = get("#avgNav");
+            var initinv = parseFloat((fundunit * avgnav).toFixed(4));
+            //var unit = nav - avgnav;
+            var profit  = parseFloat((getInvestment() - initinv).toFixed(4));
+            set("#totReturn",profit )
+
+            var totatlReturnPc = (profit / getInvestment()  * 100);
+            set("#totReturnPc",totatlReturnPc + " %");
+        }
+
+        function calculateExpanse() {
+            // Calculate the expenses
+            var expratio = get("#expratio");
+            var expenseValue = getInvestment() * (expratio / 100);
+            expenseValue = parseFloat(expenseValue.toFixed(4));
+            set("#expval", expenseValue);
+        }
+
+        function calculateExit() {
+            // Calculate the exit load        
+            var exitLoad = get("#exitload");
+            var exitLoadValue = getInvestment() * (exitLoad / 100);
+            exitLoadValue = parseFloat(exitLoadValue.toFixed(4));
+            set("#exitval", exitLoadValue);
+        }
+
+        function calculateInv() {
+            //Calculate Investment
+            var buy = get("#buy");
+            var inavprice = get("#inavprice");
+            var unitsbuy = buy / nav;
+            set("#fundunit", unitsbuy);
+        }
+
+        function calculateRedeem() {
+            //Caculate Redeem
+            var sell = get("#sell");
+            var amount = sell * nav;
+            set("#redeem", amount)
+        }
+
+        function calculateUnit() {
+            var nav = get("#nav");
+            var investmentValue = get("#investmentValue");
+
+            var fundunit = investmentValue / nav;
+            set("#fundunit", fundunit);
+
+            calculate();
+        }
+
+        function calculate() {
+            //var fundsize = get('#fundsize');
+
+            set("#investmentValue", getInvestment())
+
+            //Stamp Duty
+            var stampDuty = parseFloat((getInvestment() * 0.005).toFixed(4));
+            set("#stampduty", stampDuty);
+
+            //STCG
+            var stcg = getInvestment() * 0.15;
+            set("#STCG", stcg);
+
+            //LTCG
+            var ltcg = getInvestment() * 0.10;
+            set("#LTCG", ltcg);
+
+
+            calculateExit();
+            calculateExpanse();
+
+        }
+
+        function get(f) {
+            return document.querySelector(f).value;
+        }
+
+        function set(f, v) {
+            document.querySelector(f).value = v;//parseFloat(v.toFixed(2));
+            /*
+            if (v < 0)
+                document.querySelector(f).className = "ro red";
+    
+            if (v > 0)
+                document.querySelector(f).className = "ro green";
+                */
+        }
+
+        function printDiv(divName) {
+            var printContents = document.querySelector(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+</body>
+
+</html>
