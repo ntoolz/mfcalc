@@ -102,15 +102,15 @@ input[type=submit]:hover {
 
 /*field set sections */
 .blacksection{
-  margin: 10px;background: #0c0c0c;border-color: #000000;
+  margin: 0px;background: #0c0c0c;border-color: #000000;
 }
 
 .redsection{
-  margin: 10px;background: #210000;border-color: #8d0000;
+  margin: 0px;background: #210000;border-color: #8d0000;
 }
 
 .greensection{
-  margin: 10px;background: #002100;border-color: #008b00;
+  margin: 0px;background: #002100;border-color: #008b00;
 }
 
 
