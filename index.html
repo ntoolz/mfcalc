@@ -1,0 +1,154 @@
+<html><head>
+    <title>mf cal</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="black.css">
+      <script src="app.js"></script>
+      <style>
+          
+      </style>
+  </head>
+  
+  <body> 
+      <div ><center class="apptitle">Mutual Fund Calculator</center> </div>
+      <div class="container">
+          <form>
+              <fieldset class="blacksection">              
+              <div class="row">
+                  <div class="col-25">
+                      <label>Current NAV [Rs]:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="nav" placeholder="net assert value in Rs" onchange="calculate()">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Number Of Units:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="fundunit" placeholder="number of units" onchange="calculate()">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Total Investment:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="investmentValue" placeholder="total money invested..." onchange="calculateUnit()">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Expense Ratio:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="expratio" placeholder="expense ratio %.." onchange="calculateExpanse()">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Exit Load:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="exitload" placeholder="exitload %.." onchange="calculateExit()">
+                  </div>
+              </div>
+              </fieldset>        
+  
+          <fieldset class="redsection">
+              <legend class="redsection">Expenses</legend>
+              <div class="row">
+                  <div class="col-25">
+                      <label>Stamp Duty(0.005%):</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="red" type="number" id="stampduty" placeholder="stamp duty carhages" readonly="">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Expense Value:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro red" type="number" id="expval" placeholder="expense per value per anum" readonly="">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Exit Load Value:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro red" type="number" id="exitval" placeholder="Exit load value" readonly="">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>STCG Tax:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro red" type="number" id="STCG" placeholder="short term capital gain tax" readonly="">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>LTCG Tax:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro red" type="number" id="LTCG" placeholder="long term capital gain tax" readonly="">
+                  </div>
+              </div>
+          </fieldset>
+  
+          <fieldset class="greensection">
+              <legend class="greensection">Return</legend>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Average NAV [Rs]:</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="number" id="avgNav" placeholder="average net assert value in Rs" onchange="calculateProfit()">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Total Return [Rs]:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro green" type="number" id="totReturn" placeholder="profit in Rs" onchange="calculateProfit()" readonly="">
+                  </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-25">
+                      <label>Total Profit  [%]:</label>
+                  </div>
+                  <div class="col-75">
+                      <input class="ro green" type="number" id="totReturnPc" placeholder="profit % of invstment" onchange="calculateProfit()" readonly="">
+                  </div>
+              </div>
+  
+  
+          </fieldset>    
+  
+              
+          </form>
+      </div>
+  
+      <script>
+  
+          
+      </script>
+  
+  
+  
+  </body></html>
