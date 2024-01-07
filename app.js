@@ -1,3 +1,12 @@
+if ("serviceWorker" in navigator) {
+    //window.addEventListener("load", function() {
+      navigator.serviceWorker
+        .register("mfc.js")
+        .then(res => console.log("service worker registered"))
+        .catch(err => console.log("service worker not registered", err))
+    //})
+}
+
 function getInvestment() {
     // Calculate the value of the investment
     var nav = get("#nav");
