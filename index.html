@@ -12,125 +12,126 @@
           <form>
               <fieldset class="blacksection">              
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Current NAV [Rs]:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="nav" placeholder="net assert value in Rs" onchange="calculate()">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Number Of Units:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="fundunit" placeholder="number of units" onchange="calculate()">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Total Investment:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="investmentValue" placeholder="total money invested..." onchange="calculateUnit()">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Expense Ratio:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="expratio" placeholder="expense ratio %.." onchange="calculateExpanse()">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Exit Load:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="exitload" placeholder="exitload %.." onchange="calculateExit()">
                   </div>
               </div>
               </fieldset>        
   
+        <br/>
           <fieldset class="redsection">
-              <legend class="redsection">Expenses</legend>
+             
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Stamp Duty(0.005%):</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="red" type="number" id="stampduty" placeholder="stamp duty carhages" readonly="">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Expense Value:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro red" type="number" id="expval" placeholder="expense per value per anum" readonly="">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Exit Load Value:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro red" type="number" id="exitval" placeholder="Exit load value" readonly="">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>STCG Tax:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro red" type="number" id="STCG" placeholder="short term capital gain tax" readonly="">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>LTCG Tax:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro red" type="number" id="LTCG" placeholder="long term capital gain tax" readonly="">
                   </div>
               </div>
           </fieldset>
-  
+        <br/>
           <fieldset class="greensection">
-              <legend class="greensection">Return</legend>
+              <!--<legend class="greensection">Return</legend>-->
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Average NAV [Rs]:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input type="number" id="avgNav" placeholder="average net assert value in Rs" onchange="calculateProfit()">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Total Return [Rs]:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro green" type="number" id="totReturn" placeholder="profit in Rs" onchange="calculateProfit()" readonly="">
                   </div>
               </div>
   
               <div class="row">
-                  <div class="col-25">
+                  <div class="col-label">
                       <label>Total Profit  [%]:</label>
                   </div>
-                  <div class="col-75">
+                  <div class="col-field">
                       <input class="ro green" type="number" id="totReturnPc" placeholder="profit % of invstment" onchange="calculateProfit()" readonly="">
                   </div>
               </div>
