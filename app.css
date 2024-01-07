@@ -4,12 +4,13 @@
 
 body {
     margin: auto;
-    max-width: 800px;
+    max-width: 700px;
     font-family: Arial;
     font-size: 18px;
     background-color:#000000;
     color: #c9c9c9;
 }
+
 .apptitle{
   font-size: 30px;
   color: #FFF;
@@ -67,13 +68,13 @@ input[type=submit]:hover {
 
 .col-label {
     float: left;
-    width: 40%;
+    width: 25%;
     margin-top: 6px;
 }
 
 .col-field {
     float: left;
-    width: 60%;
+    width: 75%;
     margin-top: 6px;
 }
 
@@ -116,10 +117,9 @@ input[type=submit]:hover {
 
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 300px) {
-
-    .col-25,
-    .col-75,
+@media screen and (max-width: 600px) {
+    .col-label,
+    .col-field,
     input[type=submit] {
         width: 100%;
         margin-top: 0;
