@@ -12,12 +12,12 @@ body {
 }
 
 .apptitle{
-  font-size: 30px;
-  color: #FFF;
-  font-weight: bolder;
-  padding: 10px 0px 0px 0px;
-  background-color: #000;
-
+    font-size: 30px;
+    color: #FFF;
+    font-weight: bolder;
+    padding: 10px 0px 10px 0px;
+    background-color: transparent !important;
+    text-align: center;
 }
 
 input[type=number],
@@ -91,19 +91,18 @@ input[type=submit]:hover {
 }
 .red {
     color: #ff0000 !important;
-    background-color: #210000 !important;
-    border-color: #510000 !important;
+    background-color: transparent !important;
+
 }
 
 .green {
     color: #00ff00 !important;
-    background-color: #002100 !important;
-    border-color: #005100 !important;
+    background-color: transparent !important;    
 }
 
 /*field set sections */
 .blacksection{
-  margin: 0px;background: #0c0c0c;border-color: #000000;
+  margin:0px;background: #0c0c0c;border-color: #000000;
 }
 
 .redsection{

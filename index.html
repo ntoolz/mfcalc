@@ -7,13 +7,15 @@
   </head>
   
   <body> 
-      <div ><center class="apptitle">Mutual Fund Calculator</center> </div>
+      
       <div class="container">
+        
           <form>
-              <fieldset class="blacksection">              
+            <fieldset class="blacksection">
+              <div class="apptitle">Mutual Fund Calculator</div>              
               <div class="row">
                   <div class="col-label">
-                      <label>Current NAV [Rs]:</label>
+                      <label>NAV:</label>
                   </div>
                   <div class="col-field">
                       <input type="number" id="nav" placeholder="net assert value in Rs" onchange="calculate()">
@@ -22,7 +24,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Number Of Units:</label>
+                      <label>Units:</label>
                   </div>
                   <div class="col-field">
                       <input type="number" id="fundunit" placeholder="number of units" onchange="calculate()">
@@ -31,7 +33,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Total Investment:</label>
+                      <label>Money:</label>
                   </div>
                   <div class="col-field">
                       <input type="number" id="investmentValue" placeholder="total money invested..." onchange="calculateUnit()">
@@ -40,7 +42,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Expense Ratio:</label>
+                      <label>Exp Ratio:</label>
                   </div>
                   <div class="col-field">
                       <input type="number" id="expratio" placeholder="expense ratio %.." onchange="calculateExpanse()">
@@ -55,14 +57,11 @@
                       <input type="number" id="exitload" placeholder="exitload %.." onchange="calculateExit()">
                   </div>
               </div>
-              </fieldset>        
-  
-        <br/>
-          <fieldset class="redsection">
+
              
               <div class="row">
                   <div class="col-label">
-                      <label>Stamp Duty(0.005%):</label>
+                      <label>Stamp Duty:</label>
                   </div>
                   <div class="col-field">
                       <input class="red" type="number" id="stampduty" placeholder="stamp duty carhages" readonly="">
@@ -71,7 +70,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Expense Value:</label>
+                      <label>Exp Value:</label>
                   </div>
                   <div class="col-field">
                       <input class="ro red" type="number" id="expval" placeholder="expense per value per anum" readonly="">
@@ -80,7 +79,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Exit Load Value:</label>
+                      <label>Exit Value:</label>
                   </div>
                   <div class="col-field">
                       <input class="ro red" type="number" id="exitval" placeholder="Exit load value" readonly="">
@@ -104,14 +103,12 @@
                       <input class="ro red" type="number" id="LTCG" placeholder="long term capital gain tax" readonly="">
                   </div>
               </div>
-          </fieldset>
-        <br/>
-          <fieldset class="greensection">
+
               <!--<legend class="greensection">Return</legend>-->
   
               <div class="row">
                   <div class="col-label">
-                      <label>Average NAV [Rs]:</label>
+                      <label>Avg NAV:</label>
                   </div>
                   <div class="col-field">
                       <input type="number" id="avgNav" placeholder="average net assert value in Rs" onchange="calculateProfit()">
@@ -120,7 +117,7 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Total Return [Rs]:</label>
+                      <label>Total Return:</label>
                   </div>
                   <div class="col-field">
                       <input class="ro green" type="number" id="totReturn" placeholder="profit in Rs" onchange="calculateProfit()" readonly="">
@@ -129,25 +126,16 @@
   
               <div class="row">
                   <div class="col-label">
-                      <label>Total Profit  [%]:</label>
+                      <label>Total Profit:</label>
                   </div>
                   <div class="col-field">
                       <input class="ro green" type="number" id="totReturnPc" placeholder="profit % of invstment" onchange="calculateProfit()" readonly="">
                   </div>
-              </div>
-  
-  
-          </fieldset>    
-  
-              
+              </div>  
+          </fieldset>                  
           </form>
       </div>
   
-      <script>
-  
-          
-      </script>
-  
-  
+
   
   </body></html>
